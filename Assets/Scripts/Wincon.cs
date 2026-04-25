@@ -21,7 +21,7 @@ public class Wincon : MonoBehaviour
 
     public void ChangeScene()
     {
-        SceneManager.LoadScene("Win_Scene", LoadSceneMode.Single);
+        SceneManager.LoadScene("Wedding", LoadSceneMode.Single);
     }
 
 }

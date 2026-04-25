@@ -32,6 +32,7 @@ public class Movement : MonoBehaviour
     //Add random rotation and torque
 
     private Rigidbody rb;
+    private AudioManager AudioManager;
 
     private Coroutine _fatassCoroutine;
     public LayerMask collisionMask = ~0;
@@ -46,10 +47,12 @@ public class Movement : MonoBehaviour
         {
             rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
         }
+
+        AudioManager = FindAnyObjectByType<AudioManager>();
     }
 
     [ContextMenu("StartGame")]
-    void TriggerStart()
+    public void TriggerStart()
     {
         StartCoroutine(GetMoving());
     }
@@ -128,6 +131,8 @@ public class Movement : MonoBehaviour
             StopCoroutine(_fatassCoroutine);
             _fatassCoroutine = null;
         }
+
+        AudioManager.Play("Fatass");
         _fatassCoroutine = StartCoroutine(FatassRoutine());
     }
 
@@ -189,11 +194,13 @@ public class Movement : MonoBehaviour
     public void SwipeLeft()
     {
         SwipeDirectional(-transform.right);
+        AudioManager.Play("Grunt");
     }
 
     public void SwipeRight()
     {
         SwipeDirectional(transform.right);
+        AudioManager.Play("Grunt");
     }
 
     private void SwipeDirectional(Vector3 localXDirection)
@@ -239,6 +246,7 @@ public class Movement : MonoBehaviour
             
             if(Matches)
             {
+                AudioManager.Play("Scream");
 
                 if(isRightie)
                 {
@@ -248,9 +256,8 @@ public class Movement : MonoBehaviour
                 {
                     targetRb.AddTorque(Vector3.forward * rotateForce, ForceMode.Impulse);
                 }
-                
 
-                 Collider[] cols = c.gameObject.GetComponentsInChildren<Collider>(true);
+                Collider[] cols = c.gameObject.GetComponentsInChildren<Collider>(true);
                 for (int j = 0; j < cols.Length; j++)
                 {
                     if (cols[j] != null)
