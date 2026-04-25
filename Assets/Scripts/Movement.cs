@@ -18,7 +18,7 @@ public class Movement : MonoBehaviour
     public float _targetSpeed = -5f;
 
     [Tooltip("How far the swiper can reach")]
-    public float swipeDistanceZ = 2f;
+    public float swipeDistance = 10f;
     [Tooltip("How wide the swiper is")]
     public float swipeWidth = 1f;
     [Tooltip("How tall the swiper is")]
@@ -27,13 +27,14 @@ public class Movement : MonoBehaviour
     public float swipeForce = 5f;
     [Tooltip("Upward force applied")]
     public float swipeUpForce = 1f;
+    [Tooltip("Rotate it man")]
+    public float rotateForce = 5f;
     //Add random rotation and torque
 
     private Rigidbody rb;
 
     private Coroutine _fatassCoroutine;
     public LayerMask collisionMask = ~0;
-    //Use layers to separate leftthrowers and rightthrowers? Separate pathetic force applied when left throwing a right innocent and vice versa.
 
     private bool _inFatass = false;
 
@@ -197,10 +198,12 @@ public class Movement : MonoBehaviour
 
     private void SwipeDirectional(Vector3 localXDirection)
     {
-        Vector3 center = transform.position + transform.forward * (swipeDistanceZ * 0.5f);
-        Vector3 halfExtents = new Vector3(swipeWidth * 0.5f, swipeHeight * 0.5f, swipeDistanceZ * 0.5f);
+        Vector3 center = transform.position + transform.forward * (swipeDistance * 0.5f);
+        Vector3 halfExtents = new Vector3(swipeWidth * 0.5f, swipeHeight * 0.5f, swipeDistance * 0.5f);
 
         Collider[] hits = Physics.OverlapBox(center, halfExtents, transform.rotation, collisionMask, QueryTriggerInteraction.Ignore);
+
+        bool Matches;
 
         for (int i = 0; i < hits.Length; i++)
         {
@@ -211,25 +214,58 @@ public class Movement : MonoBehaviour
             if (targetRb == null) continue;
             if (targetRb.isKinematic) continue;
 
+            bool isRightSwipe = localXDirection.x > 0f;
+
+            bool isRightie = c.CompareTag("Rightie");
+            bool isLeftie = c.CompareTag("Leftie");
+
+            float forceMultiplier = 1f;
+
+            if ((isRightSwipe && isRightie) || (!isRightSwipe && isLeftie))
+            {
+                Matches = true;
+                forceMultiplier = 1f;
+            }
+            else
+            {
+                forceMultiplier = 0.1f;
+                Matches = false;
+            }
+
             Vector3 horizontal = localXDirection.normalized;
-            Vector3 impulse = horizontal * swipeForce + Vector3.up * swipeUpForce;
+            Vector3 impulse = (horizontal * swipeForce + Vector3.up * swipeUpForce) * forceMultiplier;
 
             targetRb.AddForce(impulse, ForceMode.Impulse);
-
-            Collider[] cols = c.gameObject.GetComponentsInChildren<Collider>(true);
-            for (int j = 0; j < cols.Length; j++)
+            
+            if(Matches)
             {
-                if (cols[j] != null)
-                    cols[j].enabled = false;
+
+                if(isRightie)
+                {
+                    targetRb.AddTorque(Vector3.back * rotateForce, ForceMode.Impulse);
+                }
+                else
+                {
+                    targetRb.AddTorque(Vector3.forward * rotateForce, ForceMode.Impulse);
+                }
+                
+
+                 Collider[] cols = c.gameObject.GetComponentsInChildren<Collider>(true);
+                for (int j = 0; j < cols.Length; j++)
+                {
+                    if (cols[j] != null)
+                        cols[j].enabled = false;
+                }
             }
         }
-    }
+}
+
 
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.cyan;
-        Vector3 center = transform.position + transform.forward * (swipeDistanceZ * 0.5f);
-        Vector3 size = new Vector3(swipeWidth, swipeHeight, swipeDistanceZ);
+        Vector3 center = transform.position + transform.forward * (swipeDistance * 0.5f);
+        Vector3 size = new Vector3(swipeWidth, swipeHeight, swipeDistance);
         Gizmos.matrix = Matrix4x4.TRS(center, transform.rotation, Vector3.one);
         Gizmos.DrawWireCube(Vector3.zero, size);
     }
