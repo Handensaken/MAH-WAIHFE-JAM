@@ -255,7 +255,9 @@ public class Movement : MonoBehaviour
 
             float forceMultiplier = 1f;
 
-            if ((isRightSwipe && isRightie) || (!isRightSwipe && isLeftie))
+            Enemy enemy = targetRb.gameObject.GetComponent<Enemy>();
+
+            if ((isRightSwipe && isRightie) || (!isRightSwipe && isLeftie) || (!isLeftie && !isRightie))
             {
                 Matches = true;
                 forceMultiplier = 1f;
@@ -275,13 +277,15 @@ public class Movement : MonoBehaviour
             {
                 audioManager.PlayScream();
 
-                if(isRightie)
+                if(isRightSwipe)
                 {
                     targetRb.AddTorque(Vector3.back * rotateForce, ForceMode.Impulse);
+                    enemy.Righter();
                 }
                 else
                 {
                     targetRb.AddTorque(Vector3.forward * rotateForce, ForceMode.Impulse);
+                    enemy.Lefter();
                 }
 
                 Collider[] cols = c.gameObject.GetComponentsInChildren<Collider>(true);

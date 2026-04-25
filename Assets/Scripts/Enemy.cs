@@ -4,16 +4,26 @@ public class Enemy : MonoBehaviour
 {
 
 
-    Animator animator;
+    public Animator animator;
 
 
     void Awake()
     {
-        animator.GetComponent<Animator>();
+        animator = GetComponent<Animator>();
     }
 
-    void OnTriggerEnter(Collider collider)
+    void OnCollisionEnter(Collision collider)
     {
         animator.SetTrigger("Push");
+    }
+
+    public void Lefter()
+    {
+        animator.SetTrigger("Lefter");
+    }
+
+    public void Righter()
+    {
+        animator.SetTrigger("Righter");
     }
 }
