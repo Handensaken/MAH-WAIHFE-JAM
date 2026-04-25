@@ -40,22 +40,29 @@ public class AudioManager : MonoBehaviour
     public void Play (string name){
         Sound s = Array.Find(sounds, sound => sound.name == name);
         s.source.Play();
-        
+
         if(s == null){
             return;
         }
     }
 
-    public void PlayRandom(Sound[] soundArray)
+    public void PlayGrunt()
     {
-        Sound s = soundArray[UnityEngine.Random.Range(0, soundArray.Length)];
+        Sound s = grunts[UnityEngine.Random.Range(0, grunts.Length)];
 
         if (s.source != null)
         {
             s.source.Play();
         }
-        else{
-            return;
+    }
+
+    public void PlayScream()
+    {
+        Sound s = screams[UnityEngine.Random.Range(0, screams.Length)];
+
+        if (s.source != null)
+        {
+            s.source.Play();
         }
-}
+    }
 }

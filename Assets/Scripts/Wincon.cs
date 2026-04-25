@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using System;
+using System.Collections;
 
 public class Wincon : MonoBehaviour
 {
@@ -17,11 +19,21 @@ public class Wincon : MonoBehaviour
     public void FadeToBlack()
     {
         animator.SetTrigger("WinWinWin");
+
+        StartCoroutine(Wait());
     }
 
-    public void ChangeScene()
+    IEnumerator Wait(){
+        yield return new WaitForSeconds(2f);
+
+        ChangeScene("Wedding");
+
+        Debug.Log("TA");
+    }
+
+    public void ChangeScene(string sceneName)
     {
-        SceneManager.LoadScene("Wedding", LoadSceneMode.Single);
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
     }
 
 }

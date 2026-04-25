@@ -194,13 +194,13 @@ public class Movement : MonoBehaviour
     public void SwipeLeft()
     {
         SwipeDirectional(-transform.right);
-        audioManager.PlayRandom(audioManager.grunts);
+        audioManager.PlayGrunt();
     }
 
     public void SwipeRight()
     {
         SwipeDirectional(transform.right);
-        audioManager.PlayRandom(audioManager.grunts);
+        audioManager.PlayGrunt();
     }
 
     private void SwipeDirectional(Vector3 localXDirection)
@@ -246,7 +246,7 @@ public class Movement : MonoBehaviour
             
             if(Matches)
             {
-                audioManager.PlayRandom(audioManager.screams);
+                audioManager.PlayScream();
 
                 if(isRightie)
                 {
