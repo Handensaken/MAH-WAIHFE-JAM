@@ -194,13 +194,13 @@ public class Movement : MonoBehaviour
     public void SwipeLeft()
     {
         SwipeDirectional(-transform.right);
-        AudioManager.Play("Grunt");
+        AudioManager.Play("grunts");
     }
 
     public void SwipeRight()
     {
         SwipeDirectional(transform.right);
-        AudioManager.Play("Grunt");
+        AudioManager.Play("grunts");
     }
 
     private void SwipeDirectional(Vector3 localXDirection)
