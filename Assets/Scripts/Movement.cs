@@ -255,7 +255,7 @@ public class Movement : MonoBehaviour
 
             float forceMultiplier = 1f;
 
-            Enemy enemy = targetRb.gameObject.GetComponent<Enemy>();
+            Enemy enemy = targetRb.gameObject.GetComponentInChildren<Enemy>();
 
             if ((isRightSwipe && isRightie) || (!isRightSwipe && isLeftie) || (!isLeftie && !isRightie))
             {
