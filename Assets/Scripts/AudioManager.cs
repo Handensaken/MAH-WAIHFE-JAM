@@ -26,7 +26,7 @@ public class AudioManager : MonoBehaviour
 
     public void Play(string category)
 {
-    Sound[] array = category == "grunt" ? grunts : sounds;
+    Sound[] array = category == "grunts" ? grunts : sounds;
 
     if (array == null || array.Length == 0) return;
 
