@@ -32,7 +32,7 @@ public class Movement : MonoBehaviour
     //Add random rotation and torque
 
     private Rigidbody rb;
-    private AudioManager AudioManager;
+    private AudioManager audioManager;
 
     private Coroutine _fatassCoroutine;
     public LayerMask collisionMask = ~0;
@@ -48,7 +48,7 @@ public class Movement : MonoBehaviour
             rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
         }
 
-        AudioManager = FindAnyObjectByType<AudioManager>();
+        audioManager = FindAnyObjectByType<AudioManager>();
     }
 
     [ContextMenu("StartGame")]
@@ -132,7 +132,7 @@ public class Movement : MonoBehaviour
             _fatassCoroutine = null;
         }
 
-        AudioManager.Play("Fatass");
+        audioManager.Play("Fatass");
         _fatassCoroutine = StartCoroutine(FatassRoutine());
     }
 
@@ -194,13 +194,13 @@ public class Movement : MonoBehaviour
     public void SwipeLeft()
     {
         SwipeDirectional(-transform.right);
-        AudioManager.Play("grunts");
+        audioManager.PlayRandom(audioManager.grunts);
     }
 
     public void SwipeRight()
     {
         SwipeDirectional(transform.right);
-        AudioManager.Play("grunts");
+        audioManager.PlayRandom(audioManager.grunts);
     }
 
     private void SwipeDirectional(Vector3 localXDirection)
@@ -246,7 +246,7 @@ public class Movement : MonoBehaviour
             
             if(Matches)
             {
-                AudioManager.Play("Scream");
+                audioManager.PlayRandom(audioManager.screams);
 
                 if(isRightie)
                 {

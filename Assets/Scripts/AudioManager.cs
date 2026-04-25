@@ -6,6 +6,7 @@ public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
     public Sound[] grunts;
+    public Sound[] screams;
 
     void Awake ()
     {
@@ -14,24 +15,47 @@ public class AudioManager : MonoBehaviour
             s.source.clip = s.clip;
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
+            s.source.loop = s.loop;
         }
-
         foreach (Sound s in grunts){
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
+            s.source.loop = s.loop;
+        }
+        foreach (Sound s in screams){
+            s.source = gameObject.AddComponent<AudioSource>();
+            s.source.clip = s.clip;
+            s.source.volume = s.volume;
+            s.source.pitch = s.pitch;
+            s.source.loop = s.loop;
+        }
+    }
+    
+    void Start(){
+        Play("Music");
+    }
+
+    public void Play (string name){
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        s.source.Play();
+        
+        if(s == null){
+            return;
         }
     }
 
-    public void Play(string category)
-{
-    Sound[] array = category == "grunts" ? grunts : sounds;
+    public void PlayRandom(Sound[] soundArray)
+    {
+        Sound s = soundArray[UnityEngine.Random.Range(0, soundArray.Length)];
 
-    if (array == null || array.Length == 0) return;
-
-    Sound s = array[UnityEngine.Random.Range(0, array.Length)];
-    s.source.Play();
+        if (s.source != null)
+        {
+            s.source.Play();
+        }
+        else{
+            return;
+        }
 }
-
 }
