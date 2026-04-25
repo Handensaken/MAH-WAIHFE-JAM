@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class Timer : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class Timer : MonoBehaviour
     public Slider timerSlider;
 
     public Wincon winconObject;
+
+    public UnityEvent Loser;
 
     private void Awake()
     {
@@ -37,6 +40,7 @@ public class Timer : MonoBehaviour
         if (elapsedTime > threshold)
         {
             winconObject.FadeToBlackSad();
+            Loser.Invoke();
             timerOn = false;
         }
         }

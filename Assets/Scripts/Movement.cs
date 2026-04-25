@@ -69,14 +69,18 @@ public class Movement : MonoBehaviour
     {
         float _timer = 0f;
         float _startSpeed = 0f;
-        float _endSpeed = 1f;
-        float _accelDuration = 1f;
+        float _endSpeed = 4f;
+        float _accelDuration = 0.5f;
 
         while (_timer < _accelDuration)
         {
             _timer += Time.fixedDeltaTime;
 
-            _speedValue = Mathf.Lerp(_startSpeed, _endSpeed, _timer / _accelDuration);
+            float t = _timer / _accelDuration;
+
+            t = 1f - Mathf.Pow(1f - t, 5f);
+
+            _speedValue = Mathf.Lerp(_startSpeed, _endSpeed, t);
 
             yield return new WaitForFixedUpdate();
         }
@@ -95,9 +99,15 @@ public class Movement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (_speedActive == true)
+        if (_speedActive)
         {
-            _speedValue *= Mathf.Pow(_speedMod, Time.fixedDeltaTime);
+            float accelStrength = _speedMod;
+
+            float ratio = _speedValue / _maxSpeed;
+
+            float taper = 1f / (1f + ratio * ratio);
+
+            _speedValue += accelStrength * taper * Time.fixedDeltaTime;
         }
 
         Vector3 movement = Vector3.forward * _speedValue * Time.fixedDeltaTime;
@@ -135,7 +145,6 @@ public class Movement : MonoBehaviour
             }
         }
         rb.MovePosition(rb.position + movement);
-        _speedValue = Mathf.Min(_speedValue, _maxSpeed);
     }
 
     [ContextMenu("Fatass")]
@@ -154,6 +163,8 @@ public class Movement : MonoBehaviour
 
     private IEnumerator FatassRoutine()
     {
+
+
         _inFatass = true;
         _speedActive = false;
 
@@ -210,7 +221,7 @@ public class Movement : MonoBehaviour
     public void SwipeLeft(InputAction.CallbackContext context)
     {
 
-        if(context.performed & !noSwiping)
+        if(context.performed & !noSwiping & !_inFatass)
         {
             SwipeDirectional(-transform.right);
             audioManager.PlayGrunt();
@@ -221,7 +232,7 @@ public class Movement : MonoBehaviour
 
     public void SwipeRight(InputAction.CallbackContext context)
     {
-        if(context.performed & !noSwiping)
+        if(context.performed & !noSwiping & !_inFatass)
         {
             SwipeDirectional(transform.right);
             audioManager.PlayGrunt();
@@ -298,7 +309,15 @@ public class Movement : MonoBehaviour
             noSwiping = true;
             StartCoroutine(InputDelay(inputTimer));
         }
-}
+    }
+
+    public void StopMoving()
+    {
+        StopAllCoroutines();
+        _speedValue = 0f;
+        _speedActive = false;
+        animator.SetTrigger("Despair");
+    }
 
 
     void OnDrawGizmosSelected()
