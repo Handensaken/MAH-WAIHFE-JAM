@@ -41,4 +41,9 @@ public class Timer : MonoBehaviour
         }
         }
     }
+
+    public void StopTimer()
+    {
+        timerOn = false;
+    }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using System.Collections;
 using System.Collections.Generic;
 using System;
@@ -29,10 +30,14 @@ public class Movement : MonoBehaviour
     public float swipeUpForce = 1f;
     [Tooltip("Rotate it man")]
     public float rotateForce = 5f;
-    //Add random rotation and torque
+
+    public float inputTimer = 1f;
+
+    private bool noSwiping = true;
 
     private Rigidbody rb;
     private AudioManager audioManager;
+    private Animator animator;
 
     private Coroutine _fatassCoroutine;
     public LayerMask collisionMask = ~0;
@@ -48,12 +53,15 @@ public class Movement : MonoBehaviour
             rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
         }
 
+        animator = GetComponent<Animator>();
         audioManager = FindAnyObjectByType<AudioManager>();
     }
 
     [ContextMenu("StartGame")]
     public void TriggerStart()
     {
+        noSwiping = false;
+        animator.SetBool("Running", true);
         StartCoroutine(GetMoving());
     }
 
@@ -76,6 +84,13 @@ public class Movement : MonoBehaviour
         _speedValue = _endSpeed;
 
         _speedActive = true;
+    }
+
+    IEnumerator InputDelay(float wait)
+    {
+        yield return new WaitForSeconds(wait);
+        
+        noSwiping = false;
     }
 
     void FixedUpdate()
@@ -132,6 +147,7 @@ public class Movement : MonoBehaviour
             _fatassCoroutine = null;
         }
 
+        animator.SetTrigger("Repel");
         audioManager.Play("Fatass");
         _fatassCoroutine = StartCoroutine(FatassRoutine());
     }
@@ -191,16 +207,27 @@ public class Movement : MonoBehaviour
             Fatass();
     }
 
-    public void SwipeLeft()
+    public void SwipeLeft(InputAction.CallbackContext context)
     {
-        SwipeDirectional(-transform.right);
-        audioManager.PlayGrunt();
+
+        if(context.performed & !noSwiping)
+        {
+            SwipeDirectional(-transform.right);
+            audioManager.PlayGrunt();
+            animator.SetTrigger("Shove_Left");
+        }
+        
     }
 
-    public void SwipeRight()
+    public void SwipeRight(InputAction.CallbackContext context)
     {
-        SwipeDirectional(transform.right);
-        audioManager.PlayGrunt();
+        if(context.performed & !noSwiping)
+        {
+            SwipeDirectional(transform.right);
+            audioManager.PlayGrunt();
+            animator.SetTrigger("Shove_Right");
+        }
+        
     }
 
     private void SwipeDirectional(Vector3 localXDirection)
@@ -264,6 +291,8 @@ public class Movement : MonoBehaviour
                         cols[j].enabled = false;
                 }
             }
+            noSwiping = true;
+            StartCoroutine(InputDelay(inputTimer));
         }
 }
 
