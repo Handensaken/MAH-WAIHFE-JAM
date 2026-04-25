@@ -1,23 +1,44 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
     public float threshold;
-    public float elapsedTime;
+    private float elapsedTime;
 
-    private void Start()
+    private bool timerOn = true;
+
+    public Slider timerSlider;
+
+    public Wincon winconObject;
+
+    private void Awake()
     {
         elapsedTime = 0f;
+
+        if (timerSlider != null)
+        {
+            timerSlider.minValue = 0f;
+            timerSlider.maxValue = threshold;
+            timerSlider.value = 0f;
+        }
     }
 
     private void Update()
     {
-        elapsedTime += Time.deltaTime;
+
+        if(timerOn){
+            elapsedTime += Time.deltaTime;
+            if (timerSlider != null)
+        {
+            timerSlider.value = elapsedTime;
+        }
 
         if (elapsedTime > threshold)
         {
-            Debug.Log("Time out!");
-            // Do what you want
+            winconObject.FadeToBlackSad();
+            timerOn = false;
+        }
         }
     }
 }
