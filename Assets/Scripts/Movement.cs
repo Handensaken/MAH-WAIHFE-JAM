@@ -101,7 +101,7 @@ public class Movement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(_speedValue >= 45)
+        if(_speedValue >= 55)
         {
             isSlow = false;
 
