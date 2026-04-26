@@ -33,7 +33,8 @@ public class Movement : MonoBehaviour
 
     public float inputTimer = 1f;
 
-    private bool noSwiping = true;
+    private bool noSwiping;
+    private bool isSlow;
 
     private Rigidbody rb;
     private AudioManager audioManager;
@@ -99,6 +100,16 @@ public class Movement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if(_speedValue >= 45)
+        {
+            isSlow = false;
+
+        }
+        else
+        {
+            isSlow = true;
+        }
+
         if (_speedActive)
         {
             float accelStrength = _speedMod;
@@ -124,11 +135,35 @@ public class Movement : MonoBehaviour
             {
                 if ((collisionMask.value & (1 << sweepHit.collider.gameObject.layer)) != 0)
                 {
+
+                    if (sweepHit.collider.CompareTag("Child"))
+                    {
+
+                        Debug.Log("Child");
+                        if(!isSlow)
+                        {
+                            if(sweepHit.transform.position.x <0)
+                        {
+                            AutoLeft();
+                            Debug.Log("Left");
+                            return;
+                        }
+                        else
+                        {
+                            AutoRight();
+                            Debug.Log("Right");
+                            return;
+                        }
+                        }
+                    }
+                    else
+                    {
                     Vector3 safePos = rb.position + dir * Mathf.Max(0f, sweepHit.distance - 0.01f);
                     rb.MovePosition(safePos);
 
                     Fatass();
                     return;
+                    }
                 }
             }
             else
@@ -238,8 +273,20 @@ public class Movement : MonoBehaviour
             audioManager.PlayGrunt();
             animator.SetTrigger("Shove_Right");
         }
-        
     }
+
+    public void AutoRight()
+    {
+        SwipeDirectional(transform.right);
+        audioManager.PlayGrunt();
+    }
+
+    public void AutoLeft()
+    {
+        SwipeDirectional(-transform.right);
+        audioManager.PlayGrunt();
+    }
+
 
     private void SwipeDirectional(Vector3 localXDirection)
     {
