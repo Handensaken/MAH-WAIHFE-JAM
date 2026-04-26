@@ -104,9 +104,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1af2fd10628f13846af6f15e0e1256b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Timer
-  threshold: 10
+  threshold: 60
   timerSlider: {fileID: 4385794387869040473}
   winconObject: {fileID: 0}
+  Loser:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
+        m_MethodName: StopMoving
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!95 &4184235109925485701
 Animator:
   serializedVersion: 7
