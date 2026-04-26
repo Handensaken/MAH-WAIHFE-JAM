@@ -25696,7 +25696,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7264792489865584040, guid: 738423da35c837c44aa8b66a4d5b7e06, type: 3}
       propertyPath: threshold
-      value: 75
+      value: 68
       objectReference: {fileID: 0}
     - target: {fileID: 7264792489865584040, guid: 738423da35c837c44aa8b66a4d5b7e06, type: 3}
       propertyPath: winconObject
