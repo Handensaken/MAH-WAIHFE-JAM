@@ -6,6 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/TheGame/MainMenu.unity
+    guid: acb74482a144d6b41bbd3299d0489f95
+  - enabled: 1
+    path: Assets/Scenes/TheGame/Intro.unity
+    guid: 451df6145c4d0d84482058930a64f1b8
+  - enabled: 1
+    path: Assets/Scenes/TheGame/Game.unity
+    guid: da9f41ee0b483894faa96b0fe7eb325a
+  - enabled: 1
+    path: Assets/Scenes/TheGame/Lose.unity
+    guid: ef8918c73c0b81f45b8285d6aa62345c
+  - enabled: 1
+    path: Assets/Scenes/TheGame/Wedding.unity
+    guid: 7e394dc8805818c458eb2f7ba36f1204
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects:

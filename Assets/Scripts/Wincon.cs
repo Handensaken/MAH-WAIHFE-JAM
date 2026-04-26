@@ -6,7 +6,6 @@ using System.Collections;
 
 public class Wincon : MonoBehaviour
 {
-
     public UnityEvent Wincondition;
 
     public Animator animatorScreen;
@@ -29,7 +28,7 @@ public class Wincon : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
 
-        ChangeScene("Loss");
+        ChangeScene("Lose");
     }
 
     public void FadeToBlack()
@@ -51,5 +50,5 @@ public class Wincon : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
     }
-
+    
 }
