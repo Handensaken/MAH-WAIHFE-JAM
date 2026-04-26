@@ -27,6 +27,7 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+<<<<<<< Updated upstream
 --- !u!1101 &-6176600726021959703
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -53,13 +54,20 @@ AnimatorStateTransition:
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
 --- !u!1102 &-4850910316276620073
+=======
+--- !u!1102 &-5929726476035283264
+>>>>>>> Stashed changes
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
   m_Name: Bestman_Win
+=======
+  m_Name: PresentBlyat
+>>>>>>> Stashed changes
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -72,7 +80,11 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
+<<<<<<< Updated upstream
   m_Motion: {fileID: 7400000, guid: cf0a1524961da39498fb0bff64dab2f5, type: 2}
+=======
+  m_Motion: {fileID: 7400000, guid: e1e32cc65d81b3648a5b42c653db5dd1, type: 2}
+>>>>>>> Stashed changes
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -153,8 +165,16 @@ AnimatorStateMachine:
     m_State: {fileID: 5165750057514629515}
     m_Position: {x: 30, y: 100, z: 0}
   - serializedVersion: 1
+<<<<<<< Updated upstream
     m_State: {fileID: -4850910316276620073}
     m_Position: {x: -230, y: 10, z: 0}
+=======
+    m_State: {fileID: 6349602158598583062}
+    m_Position: {x: 440, y: 90, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -5929726476035283264}
+    m_Position: {x: 475, y: 155, z: 0}
+>>>>>>> Stashed changes
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: -2996508602144920821}
@@ -434,6 +454,32 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1102 &6349602158598583062
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: CutsceneMove
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: bcafbba9bdf8d21468c5eaa4d923d1f9, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1101 &7360412207723578230
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
