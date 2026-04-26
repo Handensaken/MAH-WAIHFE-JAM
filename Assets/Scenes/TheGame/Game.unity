@@ -25606,9 +25606,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 667764300219504230, guid: 738423da35c837c44aa8b66a4d5b7e06, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2114166500313547183, guid: 738423da35c837c44aa8b66a4d5b7e06, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3101890381367530028, guid: 738423da35c837c44aa8b66a4d5b7e06, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4321816914943018572, guid: 738423da35c837c44aa8b66a4d5b7e06, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -25706,6 +25714,30 @@ PrefabInstance:
       propertyPath: Loser.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1643214526}
+    - target: {fileID: 8024831333035174444, guid: 738423da35c837c44aa8b66a4d5b7e06, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8024831333035174444, guid: 738423da35c837c44aa8b66a4d5b7e06, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8024831333035174444, guid: 738423da35c837c44aa8b66a4d5b7e06, type: 3}
+      propertyPath: m_Color.r
+      value: 0.2264151
+      objectReference: {fileID: 0}
+    - target: {fileID: 8523048222768579173, guid: 738423da35c837c44aa8b66a4d5b7e06, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8523048222768579173, guid: 738423da35c837c44aa8b66a4d5b7e06, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8523048222768579173, guid: 738423da35c837c44aa8b66a4d5b7e06, type: 3}
+      propertyPath: m_Color.r
+      value: 0.23910141
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

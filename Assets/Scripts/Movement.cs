@@ -162,6 +162,10 @@ public class Movement : MonoBehaviour
                     Vector3 safePos = rb.position + dir * Mathf.Max(0f, sweepHit.distance - 0.01f);
                     rb.MovePosition(safePos);
 
+                    Enemy enemy = sweepHit.collider.gameObject.GetComponentInChildren<Enemy>();
+
+                    enemy.Pushing();
+
                     Fatass();
                     return;
                     }
@@ -174,6 +178,7 @@ public class Movement : MonoBehaviour
                 {
                     Vector3 safePos = rb.position + dir * Mathf.Max(0f, rayHit.distance - 0.01f);
                     rb.MovePosition(safePos);
+                    
 
                     Fatass();
                     return;
@@ -193,7 +198,7 @@ public class Movement : MonoBehaviour
         }
 
         animator.SetTrigger("Repel");
-        audioManager.Play("Fatass");
+        audioManager.PlayGrunt();
         _fatassCoroutine = StartCoroutine(FatassRoutine());
     }
 
@@ -260,7 +265,6 @@ public class Movement : MonoBehaviour
         if(context.performed & !noSwiping & !_inFatass)
         {
             SwipeDirectional(-transform.right);
-            audioManager.PlayGrunt();
             animator.SetTrigger("Shove_Left");
         }
         
@@ -271,7 +275,6 @@ public class Movement : MonoBehaviour
         if(context.performed & !noSwiping & !_inFatass)
         {
             SwipeDirectional(transform.right);
-            audioManager.PlayGrunt();
             animator.SetTrigger("Shove_Right");
         }
     }

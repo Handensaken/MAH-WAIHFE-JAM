@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    void OnCollisionEnter(Collision collider)
+    public void Pushing()
     {
         animator.SetTrigger("Push");
     }
