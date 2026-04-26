@@ -27535,22 +27535,88 @@ MonoBehaviour:
   sounds:
   - name: Music
     clip: {fileID: 8300000, guid: d0ee997ebfd0b3145ab1fadb9c1f7a57, type: 3}
-    volume: 0.487
+    volume: 0.6
     pitch: 1.4
     loop: 0
     source: {fileID: 0}
   grunts:
-  - name: 
-    clip: {fileID: 8300000, guid: 80404d304bde5aa41852bb318a4ec789, type: 3}
-    volume: 0
-    pitch: 0
+  - name: Grunt1
+    clip: {fileID: 8300000, guid: 7e38df2b458d67e43aa72a1a1b1ceab4, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Grunt2
+    clip: {fileID: 8300000, guid: 2bd159798cac7e94095c09b2973859c4, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Grunt3
+    clip: {fileID: 8300000, guid: 10b3402d64cd03d47bfb5aed81cf276a, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Grunt4
+    clip: {fileID: 8300000, guid: 86601e2ad8133ea43aaf2fee1824b5ae, type: 3}
+    volume: 0.5
+    pitch: 1
     loop: 0
     source: {fileID: 0}
   screams:
-  - name: 
-    clip: {fileID: 8300000, guid: 80404d304bde5aa41852bb318a4ec789, type: 3}
-    volume: 0
-    pitch: 0
+  - name: Scream
+    clip: {fileID: 8300000, guid: 2a0ff141fc37ea0448e6d99ff9b0b448, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Scream
+    clip: {fileID: 8300000, guid: 2d9998a9c74b7014d8670728058dcba3, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Scream
+    clip: {fileID: 8300000, guid: 17921d48b1b87334189c9a2889579e0b, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Scream
+    clip: {fileID: 8300000, guid: 105259d84b10a96409375e55057f346e, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Scream
+    clip: {fileID: 8300000, guid: ef2f03c04cdb7eb448d3e083d2b66088, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Scream
+    clip: {fileID: 8300000, guid: be26dbe69a45f154ab284fbc10ecc5b4, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Scream
+    clip: {fileID: 8300000, guid: 5e1783d88ee3df8439d88ba7ba7f7bd0, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Scream
+    clip: {fileID: 8300000, guid: dcc00837df6fa7949a6ef8591f95a2f5, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Scream
+    clip: {fileID: 8300000, guid: ac61b77565bd23140914f933bf497b28, type: 3}
+    volume: 0.5
+    pitch: 1
     loop: 0
     source: {fileID: 0}
 --- !u!1 &1282886696
