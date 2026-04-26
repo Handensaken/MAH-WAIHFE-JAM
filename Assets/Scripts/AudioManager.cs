@@ -31,10 +31,11 @@ public class AudioManager : MonoBehaviour
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
         }
+
     }
     
     void Start(){
-        Play("Music");
+        
     }
 
     public void Play(string name)
@@ -54,6 +55,7 @@ public class AudioManager : MonoBehaviour
         }
 
         s.source.Play();
+        Debug.Log("Playing" + name);
         }
 
     public void PlayGrunt()

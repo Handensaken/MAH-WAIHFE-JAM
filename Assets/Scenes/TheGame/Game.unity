@@ -27569,10 +27569,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   sounds:
-  - name: 
-    clip: {fileID: 8300000, guid: 80404d304bde5aa41852bb318a4ec789, type: 3}
-    volume: 0
-    pitch: 0
+  - name: Music
+    clip: {fileID: 8300000, guid: d0ee997ebfd0b3145ab1fadb9c1f7a57, type: 3}
+    volume: 0.487
+    pitch: 1.4
     loop: 0
     source: {fileID: 0}
   grunts:

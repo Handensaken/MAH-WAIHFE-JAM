@@ -63,6 +63,7 @@ public class Movement : MonoBehaviour
     {
         noSwiping = false;
         animator.SetBool("Running", true);
+        audioManager.Play("Music");
         StartCoroutine(GetMoving());
     }
 
