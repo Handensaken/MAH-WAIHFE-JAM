@@ -4089,7 +4089,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1643214526}
         m_TargetAssemblyTypeName: Movement, Assembly-CSharp
-        m_MethodName: StopMoving
+        m_MethodName: WinMoving
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

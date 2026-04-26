@@ -367,6 +367,14 @@ public class Movement : MonoBehaviour
         animator.SetTrigger("Despair");
     }
 
+    public void WinMoving()
+    {
+        StopAllCoroutines();
+        _speedValue = 0f;
+        _speedActive = false;
+        animator.SetTrigger("Win");
+    }
+
 
     void OnDrawGizmosSelected()
     {
