@@ -53,15 +53,13 @@ AnimatorStateTransition:
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
 --- !u!1102 &-4850910316276620073
---- !u!1102 &-5929726476035283264
 AnimatorState:
   serializedVersion: 6
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Bestman_Win
-  m_Name: PresentBlyat
+  m_Name: Win
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -75,7 +73,6 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: cf0a1524961da39498fb0bff64dab2f5, type: 2}
-  m_Motion: {fileID: 7400000, guid: e1e32cc65d81b3648a5b42c653db5dd1, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -158,11 +155,6 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: -4850910316276620073}
     m_Position: {x: -230, y: 10, z: 0}
-    m_State: {fileID: 6349602158598583062}
-    m_Position: {x: 440, y: 90, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: -5929726476035283264}
-    m_Position: {x: 475, y: 155, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: -2996508602144920821}
